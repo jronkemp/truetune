@@ -1,0 +1,17 @@
+{
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "TrueTune",
+  "short_name": "PWA",
+  "description": "This app is to demo TrueTune in Next.js",
+  "icons": [
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
