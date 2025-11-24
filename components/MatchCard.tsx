@@ -6,7 +6,6 @@ interface MatchCardProps {
   opponent: string
   result: string
   resultColor: string
-  status: string
   views?: number
   statusText?: string
   isLive?: boolean
@@ -17,7 +16,6 @@ export function MatchCard({
   opponent,
   result,
   resultColor,
-  status,
   views,
   statusText,
   isLive,
@@ -36,11 +34,11 @@ export function MatchCard({
       </div>
 
       {/* Status Badge */}
-      <div className="flex items-center gap-2 mb-3">
+      {/* <div className="flex items-center gap-2 mb-3">
         <div className={`w-6 h-6 ${isLive ? 'bg-white' : 'bg-white/50'} rounded-full flex items-center justify-center`}>
           <span className="text-sm font-bold text-gray-700 opacity-90">{status}</span>
         </div>
-      </div>
+      </div> */}
 
       {/* Footer: Views + Status */}
       {views !== undefined && (
