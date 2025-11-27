@@ -4,6 +4,7 @@ import { Sparkle } from "lucide-react"
 interface MatchCardProps {
   team: string
   opponent: string
+  time: string
   result: string
   resultColor: string
   views?: number
@@ -14,6 +15,7 @@ interface MatchCardProps {
 export function MatchCard({
   team,
   opponent,
+  time,
   result,
   resultColor,
   views,
@@ -23,14 +25,36 @@ export function MatchCard({
   return (
     <div className="bg-gray-200/40 rounded-xl p-4 relative">
       {/* Team & Opponent */}
-      <div className="flex justify-between items-start mb-2">
+      <div className="flex justify-between items-center">
+
         <div>
           <h3 className="text-lg font-bold text-black opacity-90">{team}</h3>
+          <p className="text-base font-bold text-gray-700 opacity-90">{time}</p>
           <p className="text-base font-bold text-gray-700 opacity-90">{opponent}</p>
         </div>
-        <div className={`${resultColor} px-3 py-1 rounded-full`}>
-          <span className="text-base font-bold text-gray-700 opacity-90">{result}</span>
+
+        <div className="flex flex-col gap-3">
+          <div className={`${resultColor} px-3 py-1 rounded-full`}>
+            <span className="text-base font-bold text-gray-700 opacity-90">{result}</span>
+          </div>
+         
+          <div className="flex items-center justify-center gap-2">
+            <div className="w-5 h-5 bg-gray-200 rounded-full flex items-center justify-center">
+              <Sparkle className="w-4 h-4 text-gray-800" />
+            </div>
+
+            {views !== undefined && (
+              <span className="text-base font-bold text-gray-700 opacity-90">{views}</span>
+            )}  
+
+          </div>
+
+          {/* {statusText && (
+            <span className="text-base font-bold text-gray-700 opacity-90">{statusText}</span>
+            )} */}
+
         </div>
+
       </div>
 
       {/* Status Badge */}
@@ -40,20 +64,6 @@ export function MatchCard({
         </div>
       </div> */}
 
-      {/* Footer: Views + Status */}
-      {views !== undefined && (
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-5 bg-gray-200 rounded-full flex items-center justify-center">
-              <Sparkle className="w-4 h-4 text-gray-800" />
-            </div>
-            <span className="text-base font-bold text-gray-700 opacity-90">{views}</span>
-          </div>
-          {statusText && (
-            <span className="text-base font-bold text-gray-700 opacity-90">{statusText}</span>
-          )}
-        </div>
-      )}
     </div>
   )
 }

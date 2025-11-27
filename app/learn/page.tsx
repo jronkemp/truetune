@@ -24,12 +24,12 @@ export default function EventOverviewPage() {
     const array = [];
 
     // return
-    return (
+     return (
         <div className="min-h-screen bg-[#f1f2f2] p-4 pb-24">
             
             {/* Header - could abstract this into component */}
             <div>
-                <img className="w-24 h-24" source="@/icon-512x512.png"/>
+                <img className="w-24 h-24" src="@/icon-512x512.png"/>
                 <h1 className="text-lg ">Team Kempson</h1>
             </div>
 
@@ -39,8 +39,8 @@ export default function EventOverviewPage() {
             {/* Match Cards */}
             <div className="space-y-10">
 
-                for (let index = 0; index < array.length; index++) {
-                        const element = array[index];
+                {/* for (let index = 0; index < array.length; index++) { */}
+                        {/* const element = array[index];
                         const now = <Date></Date>;
                         const gameDate = element.date;
                         
@@ -53,32 +53,32 @@ export default function EventOverviewPage() {
                         /* need a way to group games by date, could init a var with the first iter date
                         then on the next iter compare to previous, if same dont include new h5
                         if not add extra bottom margin and new h5 */
-                        if (groupDate && groupDate == gameDate){
-                            <h5 className="text-sm {calTextColor} mb-4">${gameDate}</h5>
-                        }
+                        //if (groupDate && groupDate == gameDate){
+                        //    <h5 className="text-sm {calTextColor} mb-4">${gameDate}</h5>
+                        //}
                         
                         
                         
                         // TODO: rewrite match card to have default color values, check interface
-                        <MatchCard
-                            team="U19 Boys - ECNL"
-                            opponent="vs Opponent"
-                            startTime={gameDate}
-                            result="L  0 - 2"
-                            resultColor="bg-red-500/10"
-                            views={165}
-                            statusText="Preview Available"
-                            isLive={false}
-                        />
+                        // <MatchCard
+                        //     team="U19 Boys - ECNL"
+                        //     opponent="vs Opponent"
+                        //     startTime={gameDate}
+                        //     result="L  0 - 2"
+                        //     resultColor="bg-red-500/10"
+                        //     views={165}
+                        //     statusText="Preview Available"
+                        //     isLive={false}
+                        // />
 
 
-                        const groupDate = element.date;
+                        //const groupDate = element.date;
                     }
 
             </div>
 
         </div>
     )
-
+    
 
 }
