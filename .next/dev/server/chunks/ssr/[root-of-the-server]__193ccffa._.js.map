@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/jaronkempson/Documents/first-pwa/next-pwa-demo/app/test/page.tsx"],"sourcesContent":["// app/test/page.tsx\nimport { db } from \"@/lib/firebase\"\nimport { doc, getDoc } from \"firebase/firestore\"\n\nexport default async function TestPage() {\n  try {\n    const docRef = doc(db, \"users\", \"jronkemp@gmail.com\")\n    const docSnap = await getDoc(docRef)\n    \n    return (\n      <pre>\n        {JSON.stringify(\n          { exists: docSnap.exists(), data: docSnap.data() },\n          null,\n          2\n        )}\n      </pre>\n    )\n  } catch (error: any) {\n    return <pre>{error.message}</pre>\n  }\n}"],"names":[],"mappings":"AAAA,oBAAoB;;;;;;AACpB;AACA;AAAA;;;;AAEe,eAAe;IAC5B,IAAI;QACF,MAAM,SAAS,IAAA,wKAAG,EAAC,qHAAE,EAAE,SAAS;QAChC,MAAM,UAAU,MAAM,IAAA,2KAAM,EAAC;QAE7B,qBACE,8OAAC;sBACE,KAAK,SAAS,CACb;gBAAE,QAAQ,QAAQ,MAAM;gBAAI,MAAM,QAAQ,IAAI;YAAG,GACjD,MACA;;;;;;IAIR,EAAE,OAAO,OAAY;QACnB,qBAAO,8OAAC;sBAAK,MAAM,OAAO;;;;;;IAC5B;AACF","debugId":null}}]
+}
