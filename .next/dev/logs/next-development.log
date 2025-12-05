@@ -1,21 +1,16 @@
-[00:00:01.399] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:01.462] Server  LOG      ✓ Ready in 1254ms
-[00:00:05.848] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:06.002] Browser LOG     Firebase Analytics loaded (PWA)
-[00:00:20.862] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:21.010] Browser LOG     Firebase Analytics loaded (PWA)
-[00:02:02.158] Server  LOG      ✓ Compiled in 56ms
-[00:02:24.112] Server  LOG      ✓ Compiled in 20ms
-[00:22:46.109] Browser LOG     Firebase Analytics loaded (PWA)
-[00:22:46.109] Browser LOG     Firebase Analytics loaded (PWA)
-[00:22:46.111] Browser LOG     Firebase Analytics loaded (PWA)
-[00:22:46.111] Browser LOG     Firebase Analytics loaded (PWA)
-[00:25:18.110] Browser ERROR   %s is an async Client Component. Only Server Components can be async at the moment. This error is often caused by accidentally adding `'use client'` to a module that was originally written for the server. <EventOverviewPage>
-[00:25:18.110] Browser ERROR   A component was suspended by an uncached promise. Creating promises inside a Client Component or hook is not yet supported, except via a Suspense-compatible library or framework.
-[00:25:20.622] Browser ERROR   uncaughtError: Error: An unknown Component is an async Client Component. Only Server Components can be async at the moment. This error is often caused by accidentally adding `'use client'` to a module that was originally written for the server.
-[00:25:32.185] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:25:32.337] Server  LOG      ✓ Compiled in 26ms
-[00:25:32.587] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:25:32.730] Browser LOG     Firebase Analytics loaded (PWA)
-[00:25:43.862] Server  LOG      ✓ Compiled in 23ms
-[00:25:48.486] Server  LOG      ✓ Compiled in 25ms
+[00:00:01.886] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:02.046] Server  LOG      ✓ Ready in 1641ms
+[00:00:06.929] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.095] Browser LOG     Firebase Analytics loaded (PWA)
+[00:06:19.895] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:20.050] Browser LOG     Firebase Analytics loaded (PWA)
+[00:06:49.692] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:49.851] Browser LOG     Firebase Analytics loaded (PWA)
+[00:06:56.490] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:56.648] Browser LOG     Firebase Analytics loaded (PWA)
+[00:08:16.497] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:16.660] Browser LOG     Firebase Analytics loaded (PWA)
+[00:13:35.214] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:13:35.399] Browser LOG     Firebase Analytics loaded (PWA)
+[00:13:48.688] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:13:48.846] Browser LOG     Firebase Analytics loaded (PWA)
