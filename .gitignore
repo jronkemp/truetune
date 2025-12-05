@@ -13,7 +13,7 @@
 # testing
 /coverage
 
-# next.js
+# next.js probably need to update this to allow for secrets to be shared across for dev
 /.next/
 /out/
 
