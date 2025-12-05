@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Pivot is a Progressive Web App designed for soccer coaches to enhance team management and player development. It features a real-time player efficiency tracker for in-game insights and a comprehensive portal for managing teams, rosters, scheduling, and player registration.
 
-## Getting Started
+### **I. Core Data Models (The "Nouns")**
 
-First, run the development server:
+This revised structure introduces `Organization` and normalizes `Role`.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+*   **Organization:** The top-level entity for a club or league.
+    *   Fields: `id`, `name`, `logoUrl`, `ownerId` (link to the founding Director's User ID).
+*   **Team:** A specific team, which now belongs to an Organization.
+    *   Fields: `id`, `organizationId` (link to the Organization), `name` (e.g., "U19 Boys ECNL"), `ageGroup`, `season`.
+*   **Role:** A separate table to define all possible user roles.
+    *   Fields: `id`, `name` ('DIRECTOR', 'COACH', 'PARENT', 'PLAYER').
+*   **User:** The base account, now linked to a specific role.
+        *   Fields: `id`, `roleId` (link to the Role table), `email`, `firstName`, `lastName`, `passwordHash`.
+*   **PlayerProfile:** Represents the actual player.
+    *   Fields: `id`, `teamId`, `firstName`, `lastName`, `dateOfBirth`, `jerseyNumber`.
+*   **OrganizationMembership:** Links Directors to their Organization.
+    *   Fields: `userId`, `organizationId`.
+*   **TeamMembership:** Links Coaches, Players, and Parents to a specific Team.
+    *   Fields: `userId`, `teamId`, `linkedPlayerProfileId` (for Parents).
+*   **RegistrationForm:** A template for collecting information.
+    *   Fields: `id`, `teamId`, `title`, `description`, `fields` (JSON), `publicUrl`, `isActive`.
+*   **RegistrationSubmission:** An entry submitted for a form.
+    *   Fields: `id`, `formId`, `submittedByUserId`, `data` (JSON), `status` ('PENDING', 'APPROVED', 'REJECTED').
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **II. User Roles & Permissions (The "Who")**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The new `Director` role adds a layer of administration.
 
-## Learn More
+1.  **Director:**
+    *   The "owner" of an Organization.
+    *   Can edit Organization details (name, logo).
+    *   Can create new teams within their Organization.
+    *   Can assign/un-assign Coaches to any team in the Organization.
+    *   Can view all teams and rosters within the Organization.
 
-To learn more about Next.js, take a look at the following resources:
+2.  **Coach / Team Manager:**
+    *   Assigned to one or more teams by a Director.
+    *   Manages the day-to-day of their assigned team(s): roster, schedule, etc.
+    *   Creates registration forms and sends invite links to players/parents.
+    *   Has full access to the in-game stat tracker for their team.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3.  **Player & Parent/Guardian:**
+    *   Join a specific team via a direct registration link.
+    *   Can view team information, schedules, and relevant stats.
+    *   Parents can manage their linked child's profile and submit forms on their behalf, as discussed.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### **III. Feature Breakdown (The "What")**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The user flows are now tiered based on the new roles.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### **A. For Directors:**
+
+*   **1. Organization Setup:**
+    *   After signing up as a Director, create a new Organization, setting its name and logo.
+    *   Invite other users to become co-Directors.
+*   **2. Organization Dashboard:**
+    *   A high-level view of all teams within the Organization.
+    *   Quickly create a new team, which automatically inherits the Organization's logo.
+    *   Manage a central list of all coaches, assigning them to various teams.
+
+#### **B. For Coaches:**
+
+*   **1. Onboarding:**
+    *   Get invited to an Organization by a Director and assigned to a team.
+    *   (Alternative) If a coach signs up without an invite, they can create their own "standalone" team, which will generate a new single-team Organization for them automatically.
+*   **2. Team Management:**
+    *   From their dashboard, they manage the roster for their assigned team(s).
+    *   **Send Registration Links:** Generate unique, direct links for a specific registration form to send to prospective players and parents.
+    *   Review submissions and approve players onto their roster.
+
+#### **C. For Players & Parents:**
+
+*   **1. Link-Based Onboarding:**
+    *   Receive a unique registration link from a coach via email or message.
+    *   The link leads to a page to create a `User` account and simultaneously fill out the required `RegistrationForm` for that specific team.
+    *   Their application appears in the coach's dashboard for approval.
+*   **2. Unified Dashboard:**
+    *   View upcoming schedules, their/their child's performance stats, and any team-wide announcements.
