@@ -1,4 +1,5 @@
 import { Shield, Users, Plus, Pen } from 'lucide-react';
+import Link from 'next/link';
 
 // --- Mock Data ---
 // In a real application, this data would be fetched from your database.
@@ -81,9 +82,16 @@ export default function OrganizationDashboard() {
             </button>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {teams.map((team) => (
-              <TeamCard key={team.id} team={team} />
-            ))}
+            {/* loop through the teams in the db, for testing, if first id is one then redirect to main page */}
+            {teams.map(team =>
+              team.id === '1' ? (
+                <Link href="/" key={team.id}>
+                  <TeamCard team={team} />
+                </Link>
+              ) : (
+                <TeamCard key={team.id} team={team} />
+              ),
+            )}
           </div>
         </div>
 
